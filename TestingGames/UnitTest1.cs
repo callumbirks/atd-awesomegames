@@ -1,16 +1,17 @@
 ﻿using System;
+using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TestingGames
 {
     [TestClass]
-    public class tstGames
+    public class TstGames
     {
         [TestMethod]
         public void InstanceOK()
         {
-            clsGames newGame = new clsGames();
-            Assert.IsNotNull(newGame);
+            clsGame aGame = new clsGame();
+            Assert.IsNotNull(aGame);
         }
     }
 }
