@@ -13,6 +13,7 @@ namespace TestingGames
             clsGame aGame = new clsGame();
             Assert.IsNotNull(aGame);
         }
+        [TestMethod]
         public void GameIDPropertyOK()
         {
             clsGame aGame = new clsGame();
@@ -20,6 +21,7 @@ namespace TestingGames
             aGame.GameId = testId;
             Assert.AreEqual(aGame.GameId, testId);
         }
+        [TestMethod]
         public void GameTitlePropertyOK()
         {
             clsGame aGame = new clsGame();
@@ -27,6 +29,7 @@ namespace TestingGames
             aGame.GameTitle = testTitle;
             Assert.AreEqual(aGame.GameTitle, testTitle);
         }
+        [TestMethod]
         public void PricePropertyOK()
         {
             clsGame aGame = new clsGame();
@@ -34,6 +37,7 @@ namespace TestingGames
             aGame.Price = testPrice;
             Assert.AreEqual(aGame.Price, testPrice);
         }
+        [TestMethod]
         public void DiscountPropertyOK()
         {
             clsGame aGame = new clsGame();
@@ -41,6 +45,7 @@ namespace TestingGames
             aGame.Discount = testDiscount;
             Assert.AreEqual(aGame.Discount, testDiscount);
         }
+        [TestMethod]
         public void DatePublishedPropertyOK()
         {
             clsGame aGame = new clsGame();
@@ -48,12 +53,106 @@ namespace TestingGames
             aGame.DatePublished = testDate;
             Assert.AreEqual(aGame.DatePublished, testDate);
         }
+        [TestMethod]
         public void ActivePropertyOK()
         {
             clsGame aGame = new clsGame();
-            bool testActive = false;
+            Boolean testActive = false;
             aGame.Active = testActive;
             Assert.AreEqual(aGame.Active, testActive);
+        }
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsGame aGame = new clsGame();
+            Boolean found = false;
+            int testId = 17;
+            found = aGame.Find(testId);
+            Assert.IsTrue(found);
+        }
+        [TestMethod]
+        public void TestGameIdFound()
+        {
+            clsGame aGame = new clsGame();
+            Boolean found = false;
+            Boolean ok = true;
+            int testId = 17;
+            found = aGame.Find(testId);
+            if(aGame.GameId != 17)
+            {
+                ok = false;
+            }
+            Assert.IsTrue(ok);
+        }
+        [TestMethod]
+        public void TestGameTitleFound()
+        {
+            clsGame aGame = new clsGame();
+            Boolean found = false;
+            Boolean ok = true;
+            int testId = 17;
+            found = aGame.Find(testId);
+            if(aGame.GameTitle != "Adventures of Bork")
+            {
+                ok = false;
+            }
+            Assert.IsTrue(ok);
+        }
+        [TestMethod]
+        public void TestPriceFound()
+        {
+            clsGame aGame = new clsGame();
+            Boolean found = false;
+            Boolean ok = true;
+            int testId = 17;
+            found = aGame.Find(testId);
+            if (aGame.Price != 16.99)
+            {
+                ok = false;
+            }
+            Assert.IsTrue(ok);
+        }
+        [TestMethod]
+        public void TestDiscountFound()
+        {
+            clsGame aGame = new clsGame();
+            Boolean found = false;
+            Boolean ok = true;
+            int testId = 17;
+            found = aGame.Find(testId);
+            if (aGame.Discount != 10)
+            {
+                ok = false;
+            }
+            Assert.IsTrue(ok);
+        }
+        [TestMethod]
+        public void TestDatePublishedFound()
+        {
+            clsGame aGame = new clsGame();
+            Boolean found = false;
+            Boolean ok = true;
+            int testId = 17;
+            found = aGame.Find(testId);
+            if (aGame.DatePublished != (new DateTime(2021, 02, 21)))
+            {
+                ok = false;
+            }
+            Assert.IsTrue(ok);
+        }
+        [TestMethod]
+        public void TestActiveFound()
+        {
+            clsGame aGame = new clsGame();
+            Boolean found = false;
+            Boolean ok = true;
+            int testId = 17;
+            found = aGame.Find(testId);
+            if (aGame.Active != true)
+            {
+                ok = false;
+            }
+            Assert.IsTrue(ok);
         }
     }
 }
