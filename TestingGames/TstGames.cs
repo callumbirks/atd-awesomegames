@@ -66,7 +66,7 @@ namespace TestingGames
         {
             clsGame aGame = new clsGame();
             Boolean found = false;
-            int testId = 17;
+            int testId = 4;
             found = aGame.Find(testId);
             Assert.IsTrue(found);
         }
@@ -76,9 +76,9 @@ namespace TestingGames
             clsGame aGame = new clsGame();
             Boolean found = false;
             Boolean ok = true;
-            int testId = 17;
+            int testId = 4;
             found = aGame.Find(testId);
-            if(aGame.GameId != 17)
+            if(aGame.GameId != 4)
             {
                 ok = false;
             }
@@ -90,7 +90,7 @@ namespace TestingGames
             clsGame aGame = new clsGame();
             Boolean found = false;
             Boolean ok = true;
-            int testId = 17;
+            int testId = 4;
             found = aGame.Find(testId);
             if(aGame.GameTitle != "Adventures of Bork")
             {
@@ -104,7 +104,7 @@ namespace TestingGames
             clsGame aGame = new clsGame();
             Boolean found = false;
             Boolean ok = true;
-            int testId = 17;
+            int testId = 4;
             found = aGame.Find(testId);
             if (aGame.Price != 16.99)
             {
@@ -118,7 +118,7 @@ namespace TestingGames
             clsGame aGame = new clsGame();
             Boolean found = false;
             Boolean ok = true;
-            int testId = 17;
+            int testId = 4;
             found = aGame.Find(testId);
             if (aGame.Discount != 10)
             {
@@ -132,7 +132,7 @@ namespace TestingGames
             clsGame aGame = new clsGame();
             Boolean found = false;
             Boolean ok = true;
-            int testId = 17;
+            int testId = 4;
             found = aGame.Find(testId);
             if (aGame.DatePublished != (new DateTime(2021, 02, 21)))
             {
@@ -146,7 +146,7 @@ namespace TestingGames
             clsGame aGame = new clsGame();
             Boolean found = false;
             Boolean ok = true;
-            int testId = 17;
+            int testId = 4;
             found = aGame.Find(testId);
             if (aGame.Active != true)
             {
