@@ -11,6 +11,7 @@
         <div>
             <asp:Label ID="lblGameId" runat="server" Text="Game ID" width="91px"></asp:Label>
 &nbsp;<asp:TextBox ID="txtGameId" runat="server"></asp:TextBox>
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
             <br />
             <asp:Label ID="lblGameTitle" runat="server" Text="Title" width="91px"></asp:Label>
 &nbsp;<asp:TextBox ID="txtGameTitle" runat="server"></asp:TextBox>
@@ -18,7 +19,7 @@
             <asp:Label ID="lblPrice" runat="server" Text="Price" width="91px"></asp:Label>
 &nbsp;<asp:TextBox ID="txtPrice" runat="server"></asp:TextBox>
             <br />
-            <asp:Label ID="lblDiscount" runat="server" Text="Discount" width="91px"></asp:Label>
+            <asp:Label ID="lblDiscount" runat="server" Text="Discount (%)" width="91px"></asp:Label>
 &nbsp;<asp:TextBox ID="txtDiscount" runat="server"></asp:TextBox>
             <br />
             <asp:Label ID="lblDatePublished" runat="server" Text="Date Published"></asp:Label>

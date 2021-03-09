@@ -30,4 +30,27 @@ public partial class _Games_DataEntry : System.Web.UI.Page
         Session["aGame"] = aGame;
         Response.Redirect("GamesViewer.aspx");
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsGame aGame = new clsGame();
+        Int32 GameID;
+        Boolean Found = false;
+        GameID = Convert.ToInt32(txtGameId.Text);
+        Found = aGame.Find(GameID);
+        if(Found == true)
+        {
+            lblError.Text = "";
+            txtGameTitle.Text = aGame.GameTitle;
+            txtPrice.Text = aGame.Price.ToString();
+            txtDiscount.Text = aGame.Discount.ToString();
+            calDatePublished.VisibleDate = aGame.DatePublished;
+            calDatePublished.SelectedDate = aGame.DatePublished;
+            chkActive.Checked = aGame.Active;
+        }
+        else
+        {
+            lblError.Text = "A record with that ID was not found";
+        }
+    }
 }
