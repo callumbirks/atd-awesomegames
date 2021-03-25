@@ -4,7 +4,12 @@ namespace ClassLibrary
 {
     public class clsGame
     {
-        private int mGameId { get; set; }
+        private int mGameId;
+        private string mGameTitle;
+        private double mPrice;
+        private int mDiscount;
+        private DateTime mDatePublished;
+        private bool mActive;
         public int GameId
         {
             get
@@ -16,11 +21,12 @@ namespace ClassLibrary
                 mGameId = value;
             }
         }
-        public string GameTitle { get; set; }
-        public double Price { get; set; }
-        public int Discount { get; set; }
-        public DateTime DatePublished { get; set; }
-        public bool Active { get; set; }
+        public string GameTitle { get => mGameTitle; set => mGameTitle = value; }
+        public double Price { get => mPrice; set => mPrice = value; }
+        public int Discount { get => mDiscount; set => mDiscount = value; }
+        public DateTime DatePublished { get => mDatePublished; set => mDatePublished = value; }
+        public bool Active { get => mActive; set => mActive = value; }
+
         public string Valid(string gameTitle,
                             string price,
                             string discount,
@@ -56,7 +62,7 @@ namespace ClassLibrary
             // Validation for discount
             try
             {
-                Int32 intDiscount = Convert.ToInt32(discount);
+                int intDiscount = Convert.ToInt32(discount);
                 if(intDiscount < 0)
                 {
                     Error += "discount can not be negative. ";
@@ -98,12 +104,12 @@ namespace ClassLibrary
             DB.Execute("sproc_tblGames_FilterByGameId");
             if(DB.Count == 1)
             {
-                GameId = Convert.ToInt32(DB.DataTable.Rows[0]["GameID"]);
-                GameTitle = Convert.ToString(DB.DataTable.Rows[0]["GameTitle"]);
-                Price = Convert.ToDouble(DB.DataTable.Rows[0]["Price"]);
-                Discount = Convert.ToInt32(DB.DataTable.Rows[0]["Discount"]);
-                DatePublished = Convert.ToDateTime(DB.DataTable.Rows[0]["DatePublished"]);
-                Active = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
+                mGameId = Convert.ToInt32(DB.DataTable.Rows[0]["GameID"]);
+                mGameTitle = Convert.ToString(DB.DataTable.Rows[0]["GameTitle"]);
+                mPrice = Convert.ToDouble(DB.DataTable.Rows[0]["Price"]);
+                mDiscount = Convert.ToInt32(DB.DataTable.Rows[0]["Discount"]);
+                mDatePublished = Convert.ToDateTime(DB.DataTable.Rows[0]["DatePublished"]);
+                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
                 return true;
             }
             return false;

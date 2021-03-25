@@ -30,7 +30,7 @@ namespace TestingGames
         public void GameTitlePropertyOK()
         {
             clsGame aGame = new clsGame();
-            String testTitle = "Test Title";
+            string testTitle = "Test Title";
             aGame.GameTitle = testTitle;
             Assert.AreEqual(aGame.GameTitle, testTitle);
         }
@@ -62,7 +62,7 @@ namespace TestingGames
         public void ActivePropertyOK()
         {
             clsGame aGame = new clsGame();
-            Boolean testActive = false;
+            bool testActive = false;
             aGame.Active = testActive;
             Assert.AreEqual(aGame.Active, testActive);
         }
@@ -70,7 +70,7 @@ namespace TestingGames
         public void FindMethodOK()
         {
             clsGame aGame = new clsGame();
-            Boolean found = false;
+            bool found = false;
             int testId = 4;
             found = aGame.Find(testId);
             Assert.IsTrue(found);
@@ -79,8 +79,8 @@ namespace TestingGames
         public void TestGameIdFound()
         {
             clsGame aGame = new clsGame();
-            Boolean found = false;
-            Boolean ok = true;
+            bool found = false;
+            bool ok = true;
             int testId = 4;
             found = aGame.Find(testId);
             if(aGame.GameId != 4)
@@ -93,8 +93,8 @@ namespace TestingGames
         public void TestGameTitleFound()
         {
             clsGame aGame = new clsGame();
-            Boolean found = false;
-            Boolean ok = true;
+            bool found = false;
+            bool ok = true;
             int testId = 4;
             found = aGame.Find(testId);
             if(aGame.GameTitle != "Adventures of Bork")
@@ -107,8 +107,8 @@ namespace TestingGames
         public void TestPriceFound()
         {
             clsGame aGame = new clsGame();
-            Boolean found = false;
-            Boolean ok = true;
+            bool found = false;
+            bool ok = true;
             int testId = 4;
             found = aGame.Find(testId);
             if (aGame.Price != 16.99)
@@ -121,8 +121,8 @@ namespace TestingGames
         public void TestDiscountFound()
         {
             clsGame aGame = new clsGame();
-            Boolean found = false;
-            Boolean ok = true;
+            bool found = false;
+            bool ok = true;
             int testId = 4;
             found = aGame.Find(testId);
             if (aGame.Discount != 10)
@@ -135,8 +135,8 @@ namespace TestingGames
         public void TestDatePublishedFound()
         {
             clsGame aGame = new clsGame();
-            Boolean found = false;
-            Boolean ok = true;
+            bool found = false;
+            bool ok = true;
             int testId = 4;
             found = aGame.Find(testId);
             if (aGame.DatePublished != (new DateTime(2021, 02, 21)))
@@ -149,8 +149,8 @@ namespace TestingGames
         public void TestActiveFound()
         {
             clsGame aGame = new clsGame();
-            Boolean found = false;
-            Boolean ok = true;
+            bool found = false;
+            bool ok = true;
             int testId = 4;
             found = aGame.Find(testId);
             if (aGame.Active != true)
@@ -163,7 +163,7 @@ namespace TestingGames
         public void ValidMethodOK()
         {
             clsGame aGame = new clsGame();
-            String Error;
+            string Error;
             Error = aGame.Valid(GameTitle, Price, Discount, DatePublished);
             Assert.AreEqual(Error, "");
         }
@@ -171,8 +171,8 @@ namespace TestingGames
         public void GameTitleMinLessOne()
         {
             clsGame aGame = new clsGame();
-            String Error;
-            String TestTitle = "";
+            string Error;
+            string TestTitle = "";
             Error = aGame.Valid(TestTitle, Price, Discount, DatePublished);
             Assert.AreNotEqual(Error, "");
         }
@@ -180,26 +180,26 @@ namespace TestingGames
         public void GameTitleMin()
         {
             clsGame aGame = new clsGame();
-            String TestTitle = "1";
-            String Error = aGame.Valid(TestTitle, Price, Discount, DatePublished);
+            string TestTitle = "1";
+            string Error = aGame.Valid(TestTitle, Price, Discount, DatePublished);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void GameTitleMinPlusOne()
         {
             clsGame aGame = new clsGame();
-            String TestTitle = "12";
-            String Error = aGame.Valid(TestTitle, Price, Discount, DatePublished);
+            string TestTitle = "12";
+            string Error = aGame.Valid(TestTitle, Price, Discount, DatePublished);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void GameTitleMid()
         {
             clsGame aGame = new clsGame();
-            String TestTitle = "".PadRight(25, 'a');
+            string TestTitle = "".PadRight(25, 'a');
             if (TestTitle.Length == 25)
             {
-                String Error = aGame.Valid(TestTitle, Price, Discount, DatePublished);
+                string Error = aGame.Valid(TestTitle, Price, Discount, DatePublished);
                 Assert.AreEqual(Error, "");
             }
             else
@@ -211,10 +211,10 @@ namespace TestingGames
         public void GameTitleMaxLessOne()
         {
             clsGame aGame = new clsGame();
-            String TestTitle = "".PadRight(49,'a');
+            string TestTitle = "".PadRight(49,'a');
             if (TestTitle.Length == 49)
             {
-                String Error = aGame.Valid(TestTitle, Price, Discount, DatePublished);
+                string Error = aGame.Valid(TestTitle, Price, Discount, DatePublished);
                 Assert.AreEqual(Error, "");
             }
             else
@@ -226,10 +226,10 @@ namespace TestingGames
         public void GameTitleMax()
         {
             clsGame aGame = new clsGame();
-            String TestTitle = "".PadRight(50,'a');
+            string TestTitle = "".PadRight(50,'a');
             if (TestTitle.Length == 50)
             {
-                String Error = aGame.Valid(TestTitle, Price, Discount, DatePublished);
+                string Error = aGame.Valid(TestTitle, Price, Discount, DatePublished);
                 Assert.AreEqual(Error, "");
             }
             else
@@ -241,10 +241,10 @@ namespace TestingGames
         public void GameTitleMaxPlusOne()
         {
             clsGame aGame = new clsGame();
-            String TestTitle = "".PadRight(51,'a');
+            string TestTitle = "".PadRight(51,'a');
             if (TestTitle.Length == 51)
             {
-                String Error = aGame.Valid(TestTitle, Price, Discount, DatePublished);
+                string Error = aGame.Valid(TestTitle, Price, Discount, DatePublished);
                 Assert.AreNotEqual(Error, "");
             }
             else
@@ -256,10 +256,10 @@ namespace TestingGames
         public void GameTitleExtremeMax()
         {
             clsGame aGame = new clsGame();
-            String TestTitle = "".PadRight(300,'a');
+            string TestTitle = "".PadRight(300,'a');
             if (TestTitle.Length == 300)
             {
-                String Error = aGame.Valid(TestTitle, Price, Discount, DatePublished);
+                string Error = aGame.Valid(TestTitle, Price, Discount, DatePublished);
                 Assert.AreNotEqual(Error, "");
             }
             else
@@ -271,240 +271,240 @@ namespace TestingGames
         public void PriceExtremeMin()
         {
             clsGame aGame = new clsGame();
-            String TestPrice = (-500.00).ToString();
-            String Error = aGame.Valid(GameTitle, TestPrice, Discount, DatePublished);
+            string TestPrice = (-500.00).ToString();
+            string Error = aGame.Valid(GameTitle, TestPrice, Discount, DatePublished);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void PriceMinLessOne()
         {
             clsGame aGame = new clsGame();
-            String TestPrice = (-1.00).ToString();
-            String Error = aGame.Valid(GameTitle, TestPrice, Discount, DatePublished);
+            string TestPrice = (-1.00).ToString();
+            string Error = aGame.Valid(GameTitle, TestPrice, Discount, DatePublished);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void PriceMin()
         {
             clsGame aGame = new clsGame();
-            String TestPrice = (0.00).ToString();
-            String Error = aGame.Valid(GameTitle, TestPrice, Discount, DatePublished);
+            string TestPrice = (0.00).ToString();
+            string Error = aGame.Valid(GameTitle, TestPrice, Discount, DatePublished);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void PriceMinPlusOne()
         {
             clsGame aGame = new clsGame();
-            String TestPrice = (1.00).ToString();
-            String Error = aGame.Valid(GameTitle, TestPrice, Discount, DatePublished);
+            string TestPrice = (1.00).ToString();
+            string Error = aGame.Valid(GameTitle, TestPrice, Discount, DatePublished);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void PriceMid()
         {
             clsGame aGame = new clsGame();
-            String TestPrice = (50.00).ToString();
-            String Error = aGame.Valid(GameTitle, TestPrice, Discount, DatePublished);
+            string TestPrice = (50.00).ToString();
+            string Error = aGame.Valid(GameTitle, TestPrice, Discount, DatePublished);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void PriceMaxLessOne()
         {
             clsGame aGame = new clsGame();
-            String TestPrice = (99.00).ToString();
-            String Error = aGame.Valid(GameTitle, TestPrice, Discount, DatePublished);
+            string TestPrice = (99.00).ToString();
+            string Error = aGame.Valid(GameTitle, TestPrice, Discount, DatePublished);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void PriceMax()
         {
             clsGame aGame = new clsGame();
-            String TestPrice = (100.00).ToString();
-            String Error = aGame.Valid(GameTitle, TestPrice, Discount, DatePublished);
+            string TestPrice = (100.00).ToString();
+            string Error = aGame.Valid(GameTitle, TestPrice, Discount, DatePublished);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void PriceMaxPlusOne()
         {
             clsGame aGame = new clsGame();
-            String TestPrice = (101.00).ToString();
-            String Error = aGame.Valid(GameTitle, TestPrice, Discount, DatePublished);
+            string TestPrice = (101.00).ToString();
+            string Error = aGame.Valid(GameTitle, TestPrice, Discount, DatePublished);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void PriceExtremeMax()
         {
             clsGame aGame = new clsGame();
-            String TestPrice = (500.00).ToString();
-            String Error = aGame.Valid(GameTitle, TestPrice, Discount, DatePublished);
+            string TestPrice = (500.00).ToString();
+            string Error = aGame.Valid(GameTitle, TestPrice, Discount, DatePublished);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void PriceInvalidType()
         {
             clsGame aGame = new clsGame();
-            String TestPrice = "Jeff";
-            String Error = aGame.Valid(GameTitle, TestPrice, Discount, DatePublished);
+            string TestPrice = "Jeff";
+            string Error = aGame.Valid(GameTitle, TestPrice, Discount, DatePublished);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void DiscountExtremeMin()
         {
             clsGame aGame = new clsGame();
-            String TestDiscount = (-500).ToString();
-            String Error = aGame.Valid(GameTitle, Price, TestDiscount, DatePublished);
+            string TestDiscount = (-500).ToString();
+            string Error = aGame.Valid(GameTitle, Price, TestDiscount, DatePublished);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void DiscountMinLessOne()
         {
             clsGame aGame = new clsGame();
-            String TestDiscount = (-1).ToString();
-            String Error = aGame.Valid(GameTitle, Price, TestDiscount, DatePublished);
+            string TestDiscount = (-1).ToString();
+            string Error = aGame.Valid(GameTitle, Price, TestDiscount, DatePublished);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void DiscountMin()
         {
             clsGame aGame = new clsGame();
-            String TestDiscount = (0).ToString();
-            String Error = aGame.Valid(GameTitle, Price, TestDiscount, DatePublished);
+            string TestDiscount = (0).ToString();
+            string Error = aGame.Valid(GameTitle, Price, TestDiscount, DatePublished);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void DiscountMinPlusOne()
         {
             clsGame aGame = new clsGame();
-            String TestDiscount = (1).ToString();
-            String Error = aGame.Valid(GameTitle, Price, TestDiscount, DatePublished);
+            string TestDiscount = (1).ToString();
+            string Error = aGame.Valid(GameTitle, Price, TestDiscount, DatePublished);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void DiscountMid()
         {
             clsGame aGame = new clsGame();
-            String TestDiscount = (50).ToString();
-            String Error = aGame.Valid(GameTitle, Price, TestDiscount, DatePublished);
+            string TestDiscount = (50).ToString();
+            string Error = aGame.Valid(GameTitle, Price, TestDiscount, DatePublished);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void DiscountMaxLessOne()
         {
             clsGame aGame = new clsGame();
-            String TestDiscount = (99).ToString();
-            String Error = aGame.Valid(GameTitle, Price, TestDiscount, DatePublished);
+            string TestDiscount = (99).ToString();
+            string Error = aGame.Valid(GameTitle, Price, TestDiscount, DatePublished);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void DiscountMax()
         {
             clsGame aGame = new clsGame();
-            String TestDiscount = (100).ToString();
-            String Error = aGame.Valid(GameTitle, Price, TestDiscount, DatePublished);
+            string TestDiscount = (100).ToString();
+            string Error = aGame.Valid(GameTitle, Price, TestDiscount, DatePublished);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void DiscountMaxPlusOne()
         {
             clsGame aGame = new clsGame();
-            String TestDiscount = (101).ToString();
-            String Error = aGame.Valid(GameTitle, Price, TestDiscount, DatePublished);
+            string TestDiscount = (101).ToString();
+            string Error = aGame.Valid(GameTitle, Price, TestDiscount, DatePublished);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void DiscountExtremeMax()
         {
             clsGame aGame = new clsGame();
-            String TestDiscount = (500).ToString();
-            String Error = aGame.Valid(GameTitle, Price, TestDiscount, DatePublished);
+            string TestDiscount = (500).ToString();
+            string Error = aGame.Valid(GameTitle, Price, TestDiscount, DatePublished);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void DiscountInvalidType()
         {
             clsGame aGame = new clsGame();
-            String TestDiscount = "Test";
-            String Error = aGame.Valid(GameTitle, Price, TestDiscount, DatePublished);
+            string TestDiscount = "Test";
+            string Error = aGame.Valid(GameTitle, Price, TestDiscount, DatePublished);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void DatePublishedExtremeMin()
         {
             clsGame aGame = new clsGame();
-            String TestDate = (new DateTime(1960, 06, 21)).ToString();
-            String Error = aGame.Valid(GameTitle, Price, Discount, TestDate);
+            string TestDate = (new DateTime(1960, 06, 21)).ToString();
+            string Error = aGame.Valid(GameTitle, Price, Discount, TestDate);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void DatePublishedMinLessOne()
         {
             clsGame aGame = new clsGame();
-            String TestDate = (new DateTime(1989, 12, 31)).ToString();
-            String Error = aGame.Valid(GameTitle, Price, Discount, TestDate);
+            string TestDate = (new DateTime(1989, 12, 31)).ToString();
+            string Error = aGame.Valid(GameTitle, Price, Discount, TestDate);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void DatePublishedMin()
         {
             clsGame aGame = new clsGame();
-            String TestDate = (new DateTime(1990, 01, 01)).ToString();
-            String Error = aGame.Valid(GameTitle, Price, Discount, TestDate);
+            string TestDate = (new DateTime(1990, 01, 01)).ToString();
+            string Error = aGame.Valid(GameTitle, Price, Discount, TestDate);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void DatePublishedMinPlusOne()
         {
             clsGame aGame = new clsGame();
-            String TestDate = (new DateTime(1990, 01, 02)).ToString();
-            String Error = aGame.Valid(GameTitle, Price, Discount, TestDate);
+            string TestDate = (new DateTime(1990, 01, 02)).ToString();
+            string Error = aGame.Valid(GameTitle, Price, Discount, TestDate);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void DatePublishedMid()
         {
             clsGame aGame = new clsGame();
-            String TestDate = (new DateTime(2001, 03, 29)).ToString();
-            String Error = aGame.Valid(GameTitle, Price, Discount, TestDate);
+            string TestDate = (new DateTime(2001, 03, 29)).ToString();
+            string Error = aGame.Valid(GameTitle, Price, Discount, TestDate);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void DatePublishedMaxLessOne()
         {
             clsGame aGame = new clsGame();
-            String TestDate = DateTime.Now.Date.AddDays(-1).ToString();
-            String Error = aGame.Valid(GameTitle, Price, Discount, TestDate);
+            string TestDate = DateTime.Now.Date.AddDays(-1).ToString();
+            string Error = aGame.Valid(GameTitle, Price, Discount, TestDate);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void DatePublishedMax()
         {
             clsGame aGame = new clsGame();
-            String TestDate = DateTime.Now.Date.ToString();
-            String Error = aGame.Valid(GameTitle, Price, Discount, TestDate);
+            string TestDate = DateTime.Now.Date.ToString();
+            string Error = aGame.Valid(GameTitle, Price, Discount, TestDate);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void DatePublishedMaxPlusOne()
         {
             clsGame aGame = new clsGame();
-            String TestDate = DateTime.Now.Date.AddDays(1).ToString();
-            String Error = aGame.Valid(GameTitle, Price, Discount, TestDate);
+            string TestDate = DateTime.Now.Date.AddDays(1).ToString();
+            string Error = aGame.Valid(GameTitle, Price, Discount, TestDate);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void DatePublishedExtremeMax()
         {
             clsGame aGame = new clsGame();
-            String TestDate = DateTime.Now.Date.AddYears(50).ToString();
-            String Error = aGame.Valid(GameTitle, Price, Discount, TestDate);
+            string TestDate = DateTime.Now.Date.AddYears(50).ToString();
+            string Error = aGame.Valid(GameTitle, Price, Discount, TestDate);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void DatePublishedInvalidType()
         {
             clsGame aGame = new clsGame();
-            String TestDate = "Test21";
-            String Error = aGame.Valid(GameTitle, Price, Discount, TestDate);
+            string TestDate = "Test21";
+            string Error = aGame.Valid(GameTitle, Price, Discount, TestDate);
             Assert.AreNotEqual(Error, "");
         }
     }

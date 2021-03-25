@@ -5,18 +5,13 @@ namespace ClassLibrary
 {
     public class clsGamesCollection
     {
-        public List<clsGame> GamesList { get; set; }
-        public int Count {
-            get
-            {
-                return GamesList.Count;
-            }
-            set
-            {
-                // unnecessary
-            }
-        }
-        public clsGame ThisGame { get; set; }
+        private List<clsGame> mGamesList = new List<clsGame>();
+        private int mCount = new int();
+        private clsGame mThisGame = new clsGame();
+        public List<clsGame> GamesList { get => mGamesList; set => mGamesList = value; }
+        public int Count { get => mGamesList.Count; }
+        public clsGame ThisGame { get => mThisGame; set => mThisGame = value; }
+        
         public clsGamesCollection()
         {
             GamesList = new List<clsGame>();
@@ -35,6 +30,17 @@ namespace ClassLibrary
                 aGame.Active = Convert.ToBoolean(DB.DataTable.Rows[i]["Active"]);
                 GamesList.Add(aGame);
             }
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@GameTitle", mThisGame.GameTitle);
+            DB.AddParameter("@Price", mThisGame.Price);
+            DB.AddParameter("@Discount", mThisGame.Discount);
+            DB.AddParameter("@DatePublished", mThisGame.DatePublished);
+            DB.AddParameter("@Active", mThisGame.Active);
+            return DB.Execute("sproc_tblGames_Insert");
         }
     }
 }
