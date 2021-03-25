@@ -20,15 +20,26 @@ public partial class _Games_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
+        clsGamesCollection GamesList = new clsGamesCollection();
         clsGame aGame = new clsGame();
-        aGame.GameId = Convert.ToInt16(txtGameId.Text);
-        aGame.GameTitle = txtGameTitle.Text;
-        aGame.Price = Convert.ToDouble(txtPrice.Text);
-        aGame.Discount = Convert.ToInt16(txtDiscount.Text);
-        aGame.DatePublished = calDatePublished.SelectedDate;
-        aGame.Active = chkActive.Checked;
-        Session["aGame"] = aGame;
-        Response.Redirect("GamesViewer.aspx");
+        string Error = aGame.Valid(txtGameTitle.Text, txtPrice.Text, txtDiscount.Text, calDatePublished.ToString());
+        if (Error == "")
+        {
+            aGame.GameId = Convert.ToInt16(txtGameId.Text);
+            aGame.GameTitle = txtGameTitle.Text;
+            aGame.Price = Convert.ToDouble(txtPrice.Text);
+            aGame.Discount = Convert.ToInt16(txtDiscount.Text);
+            aGame.DatePublished = calDatePublished.SelectedDate;
+            aGame.Active = chkActive.Checked;
+            GamesList.ThisGame = aGame;
+            GamesList.Add();
+            Response.Redirect("GamesList.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
+        
     }
 
     protected void btnFind_Click(object sender, EventArgs e)

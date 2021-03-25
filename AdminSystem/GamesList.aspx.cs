@@ -16,6 +16,12 @@ public partial class _Games_List : System.Web.UI.Page
         }
     }
 
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Session["GameId"] = -1;
+        Response.Redirect("GamesDataEntry.aspx");
+    }
+
     void DisplayGames()
     {
         clsGamesCollection Games = new clsGamesCollection();
