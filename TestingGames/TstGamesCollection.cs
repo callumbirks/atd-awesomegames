@@ -67,7 +67,6 @@ namespace TestingGames
             clsGamesCollection AllGames = new clsGamesCollection();
             clsGame TestGame = new clsGame();
             int PrimaryKey = 0;
-            TestGame.GameId = 7;
             TestGame.GameTitle = "Some Game";
             TestGame.Price = 11.99;
             TestGame.Discount = 20;
@@ -76,6 +75,31 @@ namespace TestingGames
             AllGames.ThisGame = TestGame;
             PrimaryKey = AllGames.Add();
             TestGame.GameId = PrimaryKey;
+            AllGames.ThisGame.Find(PrimaryKey);
+            Assert.AreEqual(AllGames.ThisGame, TestGame);
+        }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsGamesCollection AllGames = new clsGamesCollection();
+            clsGame TestGame = new clsGame();
+            int PrimaryKey = 0;
+            TestGame.GameTitle = "Some Game";
+            TestGame.Price = 11.99;
+            TestGame.Discount = 20;
+            TestGame.DatePublished = DateTime.Now.Date;
+            TestGame.Active = true;
+            AllGames.ThisGame = TestGame;
+            PrimaryKey = AllGames.Add();
+            TestGame.GameId = PrimaryKey;
+            TestGame.GameTitle = "Another Game";
+            TestGame.Price = 7.99;
+            TestGame.Discount = 0;
+            TestGame.DatePublished = DateTime.Now.Date;
+            TestGame.Active = true;
+            AllGames.ThisGame = TestGame;
+            AllGames.Update();
             AllGames.ThisGame.Find(PrimaryKey);
             Assert.AreEqual(AllGames.ThisGame, TestGame);
         }

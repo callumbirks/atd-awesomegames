@@ -22,10 +22,9 @@ public partial class _Games_DataEntry : System.Web.UI.Page
     {
         clsGamesCollection GamesList = new clsGamesCollection();
         clsGame aGame = new clsGame();
-        string Error = aGame.Valid(txtGameTitle.Text, txtPrice.Text, txtDiscount.Text, calDatePublished.ToString());
+        string Error = aGame.Valid(txtGameTitle.Text, txtPrice.Text, txtDiscount.Text, calDatePublished.SelectedDate.ToLongDateString());
         if (Error == "")
         {
-            aGame.GameId = Convert.ToInt16(txtGameId.Text);
             aGame.GameTitle = txtGameTitle.Text;
             aGame.Price = Convert.ToDouble(txtPrice.Text);
             aGame.Discount = Convert.ToInt16(txtDiscount.Text);

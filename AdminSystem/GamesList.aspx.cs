@@ -30,4 +30,20 @@ public partial class _Games_List : System.Web.UI.Page
         lstGamesList.DataTextField = "GameTitle";
         lstGamesList.DataBind();
     }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        int GameId;
+        Console.Write("Selected index: " + lstGamesList.SelectedIndex);
+        if(lstGamesList.SelectedIndex != -1)
+        {
+            GameId = Convert.ToInt32(lstGamesList.SelectedValue);
+            Session["GameId"] = GameId;
+            Response.Redirect("GamesViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record to delete from the list";
+        }
+    }
 }
