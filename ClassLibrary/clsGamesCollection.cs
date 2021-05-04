@@ -42,5 +42,17 @@ namespace ClassLibrary
             DB.AddParameter("@Active", mThisGame.Active);
             return DB.Execute("sproc_tblGames_Insert");
         }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@GameId", mThisGame.GameId);
+            DB.AddParameter("@GameTitle", mThisGame.GameTitle);
+            DB.AddParameter("@Price", mThisGame.Price);
+            DB.AddParameter("@Discount", mThisGame.Discount);
+            DB.AddParameter("@DatePublished", mThisGame.DatePublished);
+            DB.AddParameter("@Active", mThisGame.Active);
+            DB.Execute("sproc_tblGames_Update");
+        }
     }
 }
