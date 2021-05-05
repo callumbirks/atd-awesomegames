@@ -14,12 +14,16 @@ namespace ClassLibrary
         
         public clsGamesCollection()
         {
-            GamesList = new List<clsGame>();
-            int RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblGames_SelectAll");
-            RecordCount = DB.Count;
-            for(int i = 0; i < RecordCount; i++)
+            populateList(DB);
+        }
+
+        private void populateList(clsDataConnection DB)
+        {
+            GamesList = new List<clsGame>();
+            int RecordCount = DB.Count;
+            for (int i = 0; i < RecordCount; i++)
             {
                 clsGame aGame = new clsGame();
                 aGame.GameId = Convert.ToInt32(DB.DataTable.Rows[i]["GameID"]);
@@ -53,6 +57,21 @@ namespace ClassLibrary
             DB.AddParameter("@DatePublished", mThisGame.DatePublished);
             DB.AddParameter("@Active", mThisGame.Active);
             DB.Execute("sproc_tblGames_Update");
+        }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@GameId", mThisGame.GameId);
+            DB.Execute("sproc_tblGames_Delete");
+        }
+
+        public void ReportByGameTitle(string query)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@GameTitle", query);
+            DB.Execute("sproc_tblGames_FilterByGameTitle");
+            populateList(DB);
         }
     }
 }

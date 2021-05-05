@@ -38,7 +38,6 @@ public partial class _Games_DataEntry : System.Web.UI.Page
         {
             lblError.Text = Error;
         }
-        
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
@@ -62,5 +61,10 @@ public partial class _Games_DataEntry : System.Web.UI.Page
         {
             lblError.Text = "A record with that ID was not found";
         }
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("GamesList.aspx");
     }
 }
