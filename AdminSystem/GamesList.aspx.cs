@@ -46,4 +46,40 @@ public partial class _Games_List : System.Web.UI.Page
             lblError.Text = "Please select a record to delete from the list";
         }
     }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        int GameId;
+        if(lstGamesList.SelectedIndex != -1)
+        {
+            GameId = Convert.ToInt32(lstGamesList.SelectedValue);
+            Session["GameId"] = GameId;
+            Response.Redirect("GamesConfirmDelete.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record to delete from the list";
+        }
+    }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        clsGamesCollection Games = new clsGamesCollection();
+        Games.ReportByGameTitle(txtTitleQuery.Text);
+        lstGamesList.DataSource = Games.GamesList;
+        lstGamesList.DataValueField = "GameId";
+        lstGamesList.DataTextField = "GameTitle";
+        lstGamesList.DataBind();
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        clsGamesCollection Games = new clsGamesCollection();
+        Games.ReportByGameTitle("");
+        txtTitleQuery.Text = "";
+        lstGamesList.DataSource = Games.GamesList;
+        lstGamesList.DataValueField = "GameId";
+        lstGamesList.DataTextField = "GameTitle";
+        lstGamesList.DataBind();
+    }
 }

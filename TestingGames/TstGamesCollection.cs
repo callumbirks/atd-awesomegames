@@ -103,5 +103,42 @@ namespace TestingGames
             AllGames.ThisGame.Find(PrimaryKey);
             Assert.AreEqual(AllGames.ThisGame, TestGame);
         }
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsGamesCollection AllGames = new clsGamesCollection();
+            clsGame TestGame = new clsGame();
+            int PrimaryKey = 0;
+            TestGame.GameTitle = "Some Game";
+            TestGame.Price = 11.99;
+            TestGame.Discount = 20;
+            TestGame.DatePublished = DateTime.Now.Date;
+            TestGame.Active = true;
+            AllGames.ThisGame = TestGame;
+            PrimaryKey = AllGames.Add();
+            TestGame.GameId = PrimaryKey;
+            AllGames.ThisGame.Find(PrimaryKey);
+            AllGames.Delete();
+            bool Found = AllGames.ThisGame.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+        }
+
+        [TestMethod]
+        public void ReportByGameTitle()
+        {
+            clsGamesCollection AllGames = new clsGamesCollection();
+            clsGamesCollection FilteredGames = new clsGamesCollection();
+            FilteredGames.ReportByGameTitle("");
+            Assert.AreEqual(AllGames.Count, FilteredGames.Count);
+        }
+
+        [TestMethod]
+        public void ReportByGameTitleNoneFound()
+        {
+            clsGamesCollection FilteredGames = new clsGamesCollection();
+            FilteredGames.ReportByGameTitle("some game that doesn't exist");
+            Assert.AreEqual(0, FilteredGames.Count);
+        }
     }
 }

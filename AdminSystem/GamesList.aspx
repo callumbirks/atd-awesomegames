@@ -13,6 +13,14 @@
         </div>
         <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" style="width: 37px; height: 26px" />
         <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" />
+        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" />
+        <br />
+        <br />
+        Search by Title:
+        <asp:TextBox ID="txtTitleQuery" runat="server"></asp:TextBox>
+        <br />
+        <asp:Button ID="btnApply" runat="server" Text="Apply" OnClick="btnApply_Click" />
+&nbsp;<asp:Button ID="btnClear" runat="server" Text="Clear" OnClick="btnClear_Click" />
         <br />
         <asp:Label ID="lblError" runat="server"></asp:Label>
     </form>

@@ -30,7 +30,7 @@
             <asp:Label ID="lblError" runat="server"></asp:Label>
             <br />
             <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
-&nbsp;<asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+&nbsp;<asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click"/>
         </div>
     </form>
 </body>
